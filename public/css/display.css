@@ -1,0 +1,76 @@
+
+body, p, div, ul {
+	padding: 0px;
+	margin: 0px;
+	height:0px;
+}
+
+body {
+	font-family: Menlo;
+	overflow: hidden;
+}
+
+#a-side video,
+#b-side video,
+#a-sideBuffer video,
+#b-sideBuffer video	
+{
+	padding-left: -100px;
+	width:50px;
+	display:none;
+}
+
+#connectButton
+{
+	top:5px;
+}
+
+#main-channel
+{
+	position:absolute;
+	width:100%;
+	height:100%;
+	z-index:1000;
+}
+
+#LoadingBack
+{
+	position:absolute;
+}
+
+#LoadingTimer
+{
+	position:absolute;
+	top:48%;
+	left:48%;
+	width:4%;
+	height:4%;
+}
+
+#Brand
+{
+	position:absolute;
+	right:16.7%;
+	bottom:7%;
+	width:24%;
+	z-index:2000;
+}
+
+#Brand.active
+{
+	right:3%;
+	opacity:0.5;
+	transition: right 0.5s linear, opacity 0.5s linear;
+	-moz-transition: right 0.5s linear, opacity 0.5s linear;
+	-o-transition: right 0.5s linear, opacity 0.5s linear;
+	-webkit-transition: right 0.5s linear, opacity 0.5s linear;
+}
+
+.disapear
+{
+	opacity:0;
+	transition: opacity 0.5s linear;
+	-moz-transition: opacity 0.5s linear;
+	-o-transition: opacity 0.5s linear;
+	-webkit-transition: opacity 0.5s linear;
+}

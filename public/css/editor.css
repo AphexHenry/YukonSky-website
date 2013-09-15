@@ -1,0 +1,119 @@
+
+body
+{
+	overflow-x:hidden;
+}
+
+.CodeMirror {
+height: auto;
+}
+.CodeMirror-scroll {
+overflow-y: hidden;
+overflow-x: auto;
+}
+
+.saveButton{
+	position:fixed;
+	top:20px;
+	right:20px;
+	z-index: 1000;
+}
+
+.mySwitch{
+	right:20px;
+	float:right;
+	margin-top: 20px;
+}
+
+.myAnimationsButton
+{
+	position:fixed;
+	top:20px;
+	left:20px;
+	z-index: 1000;
+}
+
+.removeButton
+{
+	float:right;
+}
+
+.CodeCopy
+{
+	float:right;
+}
+
+.codeCopyText
+{
+	width:250px;
+}
+
+#CodeGUISwitch
+{
+	position:fixed;
+	top:20px;
+	right:47%;
+	z-index: 1000;
+}
+
+.form-control
+{
+	width:100px;
+}
+
+.blockCode
+{
+	margin-top: 30px;
+	background-color: #f8f8f8;
+}
+
+#Codes
+{
+	margin-top:40px;
+}
+
+#code,
+#GUI
+{
+	position:absolute;
+	width:90%;
+	margin-top: 30px;
+	opacity:1;
+	transition: margin-left 0.5s ease-in-out, opacity 0.5s linear;
+	-moz-transition: margin-left 0.5s ease-in-out, opacity 0.5s linear;
+	-o-transition: margin-left 0.5s ease-in-out, opacity 0.5s linear;
+	-webkit-transition: margin-left 0.5s ease-in-out, opacity 0.5s linear;
+}
+
+.lined
+{
+	margin-top: 20px;
+	border-style:solid;
+	border-width:1px;
+	border-color: #a9a9a9;
+	background-color: #f9f9f9;
+	padding: 20px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#code.unactive
+{
+	opacity:0;
+	margin-left: -100%;
+/*	transition: margin-left 0.3s linear, opacity 0.3s linear;
+	-moz-transition: margin-left 0.3s linear, opacity 0.3s linear;
+	-o-transition: margin-left 0.3s linear, opacity 0.3s linear;
+	-webkit-transition: margin-left 0.3s linear, opacity 0.3s linear;*/
+}
+
+#GUI.unactive
+{
+	opacity:0;
+	margin-left: 100%;
+/*	transition: margin-left 0.3s linear, opacity 0.3s linear;
+	-moz-transition: margin-left 0.3s linear, opacity 0.3s linear;
+	-o-transition: margin-left 0.3s linear, opacity 0.3s linear;
+	-webkit-transition: margin-left 0.3s linear, opacity 0.3s linear;*/
+}

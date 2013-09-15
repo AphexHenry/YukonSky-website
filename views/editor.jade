@@ -1,0 +1,59 @@
+extends layout
+
+block content
+
+	button(id="saveButton", type="button", class="btn saveButton btn-primary", data-loading-text="saving...") save
+	<!-- Split button -->
+	div(class="btn-group myAnimationsButton")
+		button(type="button", class="btn btn-default dropdown-default", data-toggle="dropdown") My Animations
+			span(class="caret")
+		ul(class="dropdown-menu", role="menu", id="AnimationsAnchor")
+
+	div(class="make-switch", id="CodeGUISwitch", data-on="info", data-off="success", data-on-label="Code", data-off-label="GUI")
+		input(type="checkbox", checked)
+	div(id="Codes")
+		div(id="GUI", class="item unactive")
+			div(class="btn-group")
+				button(type="button", class="btn btn-default dropdown-toggle", data-toggle="dropdown") Add Input
+					span(class="caret")
+				ul(class="dropdown-menu")
+					li()
+						a(onclick="AddDefaultNumber()") number
+					li() 
+						a(onclick="AddDefaultColor()") color
+			div(id="GUIBase")
+		div(id="code", class="item")
+
+	<!-- Modal -->
+	div(class="modal fade", id="myModal", tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+		div(class="modal-dialog")
+			div(class="modal-content")
+				div(class="modal-header")
+					button(type="button", class="close", data-dismiss="modal", aria-hidden="true") close
+					h4(class="modal-title") Synchronize other windows
+				div(class="modal-body")
+					h5() Would you like to sync other windows?
+				div(class="modal-footer")
+					button(type="button", class="btn btn-default", data-dismiss="modal") Sync
+					button(type="button", class="btn btn-primary", data-dismiss="modal") Don't Sync
+
+	script(src="/socket.io/socket.io.js")
+
+	link(rel='stylesheet', href="js/libs/codemirror/lib/codemirror.css", charset='utf-8', media='screen')
+	script(src="js/libs/codemirror/lib/codemirror.js")
+	link(rel='stylesheet', href="js/libs/codemirror/doc/docs.css", charset='utf-8', media='screen')
+	script(src="js/libs/codemirror/mode/javascript/javascript.js")
+	script(src="js/libs/codemirror/keymap/extra.js")
+	
+	link(rel='stylesheet', href='/css/lib/farbtastic.css', media='screen', charset='utf-8')
+	link(rel='stylesheet', href='/css/style.css', media='screen', charset='utf-8')
+
+	script(src="js/libs/farbtastic.js")
+
+	link(rel='stylesheet', href='/css/style.css', media='screen', charset='utf-8')
+	link(rel='stylesheet', href='/css/editor.css', media='screen', charset='utf-8')
+	script(src="js/editor/codeParser.js")
+	script(src="js/editor/listener.js")
+	script(src="js/libs/communicationManager.js")
+	script(src="js/composer/utils.js")
+	script(src="js/editor/editorApp.js")

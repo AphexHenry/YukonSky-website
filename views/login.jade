@@ -1,0 +1,48 @@
+extends layout
+
+block content
+	img(src="/images/login.JPG", class="fullscr")
+	div(id="app")
+		div(class="row centered")
+			form(action="/file-upload", method="post", class="dropzone dz-clickable", id="dropzone")
+				div(class="dz-default dz-message dropMess", id="textdrag")
+					h3() Drop image here to upload
+					h3() Depose ton image du ciel ici
+				canvas(id="preview")
+				canvas(id="previewMask", class="hidden")
+				img(id="previewHidden")
+				input(type="hidden", name="file", id="canvasInput")
+				image(id="sendButton", src="assets/continue.png", class="hidden")
+			div(id="edit", class="hidden")
+				input(type="text", class="mySlider", id="scaleSlider", value="", data-slider-min="400", data-slider-max="1000", data-slider-step="0.03", data-slider-value="0.5", data-slider-orientation="horizontal", data-slider-id="mixerS", data-slider-selection="before", data-slider-tooltip="hide", style="width: 270px;")
+			div(id="setTime", class="hidden")
+				h3(style="text-align:center; margin-left:-100px;") when was the picture shot?
+			div(id="setWeather", class="hidden")
+				h3(style="text-align:center; margin-left:-50px;") how was the weather?
+				br()
+				h4() cloudiness
+				input(type="text", class="mySlider", id="cloudiness", value="", data-slider-min="0", data-slider-max="1", data-slider-step="0.03", data-slider-value="0.5", data-slider-orientation="horizontal", data-slider-id="cloudinessS", data-slider-selection="before", data-slider-tooltip="hide", style="width: 270px;")
+				h4() lightness
+				input(type="text", class="mySlider", id="daynight", value="", data-slider-min="400", data-slider-max="1000", data-slider-step="0.03", data-slider-value="0.5", data-slider-orientation="horizontal", data-slider-id="daynightS", data-slider-selection="before", data-slider-tooltip="hide", style="width: 270px;")
+				br()
+				h4() what do we see?
+				label(class="checkbox") aurora
+					input(id="aurora", type="checkbox", value="aurora")
+				label(class="checkbox") sun
+					input(id="aurora", type="checkbox", value="aurora")
+				label(class="checkbox") moon
+					input(id="aurora", type="checkbox", value="aurora")
+				label(class="checkbox") bird
+					input(id="aurora", type="checkbox", value="aurora")
+						
+	link(rel='stylesheet', href='/css/lib/bootstrap-timepicker.min.css', media='screen', charset='utf-8')
+	link(rel='stylesheet', href='/css/lib/datepicker.css', media='screen', charset='utf-8')
+
+	script(src="js/libs/bootstrap-datepicker.js")
+	script(src="js/libs/bootstrap-timepicker.min.js")
+
+	script(src="js/login/loginApp.js")
+	script(src="js/login/ImageEditor.js")
+	
+	link(rel='stylesheet', href='/css/style.css', media='screen', charset='utf-8')
+	link(rel='stylesheet', href='/css/login.css', media='screen', charset='utf-8')

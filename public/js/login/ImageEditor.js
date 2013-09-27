@@ -27,10 +27,15 @@ function ImageEditor()
     that.objectToSend.weather.daynight = $(this).val();
   });
 
+
+  $('#precipitation').slider().on('slide', function(ev){
+    that.objectToSend.weather.precipitation = $(this).val();
+  });
+
   // $('input[type="checkbox"]').checkbox();
 
   this.state = 0;
-  this.objectToSend = {weather:{cloudiness:0, daynight:0}};
+  this.objectToSend = {weather:{cloudiness:0, daynight:0, precipitation:0}, visible:{}};
 }
 
 ImageEditor.prototype.init = function(aImage, aDate)
@@ -136,7 +141,12 @@ ImageEditor.prototype.nextState = function()
       $('#setWeather').removeClass('hidden');
       break;
     case 3:
+      this.objectToSend.visible.aurora = $('#aurora')[0].checked;
+      this.objectToSend.visible.bird = $('#bird')[0].checked;
+      this.objectToSend.visible.moon = $('#moon')[0].checked;
+      this.objectToSend.visible.sun = $('#sun')[0].checked;
       var canvasInput = $('#canvasInput')[0];
+      canvasInput.value = JSON.stringify(this.objectToSend);
       canvasInput.form.submit();
       break;
   }

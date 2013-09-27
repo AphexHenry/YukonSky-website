@@ -32,8 +32,12 @@
 							.insertBefore(this.element)
 							.append(this.element);
 		this.id = this.element.data('slider-id')||options.id;
+		this.class = this.element.data('slider-class')||options.class;
 		if (this.id) {
 			this.picker[0].id = this.id;
+		}
+		if(this.class){
+			this.picker.addClass(this.class);	
 		}
 
 		if (typeof Modernizr !== 'undefined' && Modernizr.touch) {

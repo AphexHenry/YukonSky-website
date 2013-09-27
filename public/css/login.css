@@ -7,6 +7,12 @@
   width:300px;
 }
 
+input[type="checkbox"]
+{
+  right: 0px;
+  position: absolute;
+}
+
 #edit{
 	position:relative;
 	opacity:0.2;
@@ -18,6 +24,53 @@
 	-moz-transition: opacity 0.2s linear;
 	-o-transition: opacity 0.2s linear;
 	-webkit-transition: opacity 0.2s linear;
+}
+
+#localisation
+{
+  opacity: 0.4;
+  position:absolute;
+  top:10px;
+  right:20px;
+  z-index: 1000;
+  width:100px;
+}
+
+#localisation:hover{
+  cursor:pointer;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  -webkit-transition: opacity 0.2s linear;
+}
+
+#moonIcon
+{
+  background-image: url("../assets/moon-icon.png");
+}
+
+#rainIcon
+{
+  background-image: url("../assets/rain-icon.png");
+}
+
+#cloudIcon
+{
+  background-image: url("../assets/clouds-icon.png");
+}
+
+#sunIcon
+{
+ background-image: url("../assets/sun-icon.png"); 
+}
+
+.SmallIcon
+{
+  width:30px;
+  height:30px;
+  background-size:20px 20px;
+  background-repeat:no-repeat;
 }
 
 #timepicker

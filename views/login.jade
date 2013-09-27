@@ -1,13 +1,16 @@
 extends layout
 
 block content
+	div(id="localisation", onclick="toggleLocalisation()")
 	img(src="/images/login.JPG", class="fullscr")
 	div(id="app")
 		div(class="row centered")
 			form(action="/file-upload", method="post", class="dropzone dz-clickable", id="dropzone")
 				div(class="dz-default dz-message dropMess", id="textdrag")
-					h3() Drop image here to upload
-					h3() Depose ton image du ciel ici
+					h3(class="enCapt") Drop image here to upload
+					h3(class="frCapt") Glisse ton image du ciel ici
+					h5(class="enCapt") ensure that nothing touching the ground is visible
+					h5(class="frCapt") assure toi que l'on ne voit rien qui touch le sol
 				canvas(id="preview")
 				canvas(id="previewMask", class="hidden")
 				img(id="previewHidden")
@@ -16,25 +19,50 @@ block content
 			div(id="edit", class="hidden")
 				input(type="text", class="mySlider", id="scaleSlider", value="", data-slider-min="400", data-slider-max="1000", data-slider-step="0.03", data-slider-value="0.5", data-slider-orientation="horizontal", data-slider-id="mixerS", data-slider-selection="before", data-slider-tooltip="hide", style="width: 270px;")
 			div(id="setTime", class="hidden")
-				h3(style="text-align:center; margin-left:-100px;") when was the picture shot?
+				h3(style="text-align:center; margin-left:-100px;", class="enCapt") when was the picture shot?
+				h3(style="text-align:center; margin-left:-100px;", class="frCapt") quand a-t-elle été prise?
 			div(id="setWeather", class="hidden")
-				h3(style="text-align:center; margin-left:-50px;") how was the weather?
+				h3(style="text-align:center; margin-left:-50px;", class="enCapt") how was the weather?
+				h3(style="text-align:center; margin-left:-50px;", class="frCapt") comment était la météo?
 				br()
-				h4() cloudiness
-				input(type="text", class="mySlider", id="cloudiness", value="", data-slider-min="0", data-slider-max="1", data-slider-step="0.03", data-slider-value="0.5", data-slider-orientation="horizontal", data-slider-id="cloudinessS", data-slider-selection="before", data-slider-tooltip="hide", style="width: 270px;")
-				h4() lightness
-				input(type="text", class="mySlider", id="daynight", value="", data-slider-min="400", data-slider-max="1000", data-slider-step="0.03", data-slider-value="0.5", data-slider-orientation="horizontal", data-slider-id="daynightS", data-slider-selection="before", data-slider-tooltip="hide", style="width: 270px;")
+				h4(class="enCapt") clear/cloudy
+				h4(class="frCapt") dégagé/nuageux
+				div(class="row")
+					div(id="sunIcon", class="col-1 SmallIcon")
+					input(type="text", class="mySlider", data-slider-class="col-6",  id="cloudiness", value="", data-slider-min="400", data-slider-max="1000", data-slider-step="0.03", data-slider-value="0.5", data-slider-orientation="horizontal", data-slider-id="cloudinessS", data-slider-selection="before", data-slider-tooltip="hide", style="width: 270px;")
+					span(id="cloudIcon", class="col-1 SmallIcon")
+				h4(class="enCapt") night/day
+				h4(class="frCapt") jour/nuit
+				div(class="row")
+					span(id="moonIcon", class="col-1 SmallIcon")
+					input(type="text", class="mySlider", data-slider-class="col-6",  id="daynight", value="", data-slider-min="400", data-slider-max="1000", data-slider-step="0.03", data-slider-value="0.5", data-slider-orientation="horizontal", data-slider-id="daynightS", data-slider-selection="before", data-slider-tooltip="hide", style="width: 270px;")
+					div(id="sunIcon", class="col-1 SmallIcon")
+				h4(class="enCapt") precipitation
+				h4(class="frCapt") précipitations
+				div(class="row")
+					div(id="sunIcon", class="col-1 SmallIcon")
+					input(type="text", class="mySlider", data-slider-class="col-6",  id="precipitation", value="", data-slider-min="400", data-slider-max="1000", data-slider-step="0.03", data-slider-value="0.5", data-slider-orientation="horizontal", data-slider-id="precipitationS", data-slider-selection="before", data-slider-tooltip="hide", style="width: 270px;")
+					span(id="rainIcon", class="col-1 SmallIcon")
 				br()
-				h4() what do we see?
-				label(class="checkbox") aurora
-					input(id="aurora", type="checkbox", value="aurora")
-				label(class="checkbox") sun
-					input(id="aurora", type="checkbox", value="aurora")
-				label(class="checkbox") moon
-					input(id="aurora", type="checkbox", value="aurora")
-				label(class="checkbox") bird
-					input(id="aurora", type="checkbox", value="aurora")
-						
+				h4(class="enCapt") what do we see on the picture?
+				h4(class="frCapt") que voit-on sur l'image?
+				div(class="row")
+					label(class="checkbox", class="col-3") aurora
+						input(id="aurora", type="checkbox", value="aurora")
+					label(class="checkbox", class="col-3") sun
+						input(id="sun", type="checkbox", value="sun")
+				div(class="row")
+					label(class="checkbox", class="col-3") moon
+						input(id="moon", type="checkbox", value="moon")
+					label(class="checkbox", class="col-3") bird
+						input(id="bird", type="checkbox", value="bird")
+			div(id="sending", class="hidden")
+				div(class="progress progress-striped active")
+					div(class="progress-bar",  role="progressbar", aria-valuenow="45", aria-valuemin="0", aria-valuemax="100", style="width: 45%")
+						span(class="sr-only") 45% Complete
+		div(id="FlyDiv")
+			button(button(type="button", id="flyButton", onclick="FlyClicked()")
+
 	link(rel='stylesheet', href='/css/lib/bootstrap-timepicker.min.css', media='screen', charset='utf-8')
 	link(rel='stylesheet', href='/css/lib/datepicker.css', media='screen', charset='utf-8')
 

@@ -1,4 +1,6 @@
 
+var FR = true;
+
 var onloadMain = function() {
   // Check for the various File API support.
 if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -12,6 +14,12 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
   var dropZone = document.getElementById('dropzone');
   dropZone.addEventListener('dragover', handleDragOver, false);
   dropZone.addEventListener('drop', handleFileSelect, false);
+
+  if(FR)
+  {
+    $(".enCapt").addClass("hidden");
+    $("#localisation").html("<h4> En /<strong> Fr </strong></h4>")
+  }
 
   function handleFileSelect(evt) 
   {
@@ -65,6 +73,28 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 
   animate();
 
+}
+
+function toggleLocalisation()
+{
+  FR = !FR;
+  if(FR)
+  {
+    $(".enCapt").addClass("hidden");
+    $(".frCapt").removeClass("hidden");
+    $("#localisation").html("<h4> En /<strong> Fr </strong></h4>")
+  }
+  else
+  {
+    $(".frCapt").addClass("hidden");
+    $(".enCapt").removeClass("hidden");
+    $("#localisation").html("<h4><strong> En </strong>/ Fr </h4>")
+  }
+}
+
+function FlyClicked()
+{
+  window.location.href = "/fly";
 }
 
 window.onload = onloadMain;

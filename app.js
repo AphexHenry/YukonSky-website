@@ -7,7 +7,6 @@ var express = require('express')
   , path = require('path')
   , fs = require('fs')
   , helpers = require('./lib/helpers.js')
-  , vinelib = require('./lib/vineAgent.js')
   , sio     = require('socket.io')         // web socket external module
   , winston = require('winston')           // logging module
   , vineDB = require('./model/VineDB.js')
@@ -59,7 +58,9 @@ app.configure('production', function() {
 });
 
 app.post('/file-upload', function(req, res) {
-  var img = req.body.file;
+  var lobject = JSON.parse( req.body.file );
+  console.log(lobject);
+  var img = lobject.image;
   // strip off the data: url prefix to get just the base64-encoded bytes
   var data = img.replace(/^data:image\/\w+;base64,/, "");
   var base64Image = new Buffer(data, 'base64');
@@ -165,25 +166,6 @@ io.sockets.on('connection', function (socket) {
         
     // });
 
-    socket.on('get:Code', function(aData)
-    {   
-          fs.readdir("public/js/users/" + aData.user + "/", function(err, data){
-          if(err)
-          {
-            console.log("error looking in directoriess" + err);
-          }
-          else
-          {
-            var list = [];
-            for(var i = 0; i < data.length; i++)
-            {
-              list.push({user:aData.user, visual:data[i], file:"visual.js", isGUI:false});
-              list.push({user:aData.user, visual:data[i], file:"GUI.js", isGUI:true});
-            }
-            socket.emit('send:code', JSON.stringify(list));
-          }
-        });
-    });
 
     socket.on('save:code', function(aData)
     {   
